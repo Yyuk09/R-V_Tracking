@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2024 at 10:38 AM
+-- Generation Time: Dec 06, 2024 at 12:10 PM
 -- Server version: 8.0.38
 -- PHP Version: 8.2.12
 
@@ -40,15 +40,16 @@ CREATE TABLE `expenses` (
 --
 
 INSERT INTO `expenses` (`id`, `date`, `item_id`, `price`, `recorded_by`) VALUES
-(1, '2024-12-01', 1, 11.00, 'lim'),
-(2, '2024-12-02', 2, 15.00, 'lim'),
-(4, '2024-12-02', 2, 15.00, 'lim'),
-(5, '2024-12-05', 1, 1.00, 'joey'),
-(6, '2024-12-05', 1, 1.00, 'joey'),
-(7, '2024-12-04', 3, 5.00, 'joey'),
-(8, '2024-12-01', 4, 17.00, 'joey'),
-(9, '2024-12-03', 5, 30.00, 'joey'),
-(10, '2024-12-03', 5, 30.00, 'joey');
+(15, '2024-12-02', 12, 11.00, 'hon'),
+(16, '2024-12-02', 12, 13.00, 'hon'),
+(17, '2024-12-03', 10, 14.00, 'hon'),
+(18, '2024-12-03', 10, 14.00, 'hon'),
+(19, '2024-12-03', 10, 14.00, 'hon'),
+(20, '2024-12-02', 14, 9.00, 'hon'),
+(21, '2024-12-04', 10, 4.00, 'hon'),
+(22, '2024-12-01', 15, 16.00, 'CY'),
+(23, '2024-12-04', 12, 11.00, 'CY'),
+(24, '2024-11-28', 12, 22.00, 'CY');
 
 -- --------------------------------------------------------
 
@@ -67,12 +68,11 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `item_id`, `item_name`) VALUES
-(1, '', 'Water'),
-(2, '002', 'fertilizer'),
-(3, '003', 'salary'),
-(4, '004', 'delivery'),
-(5, '005', 'electrical'),
-(6, '006', 'box');
+(10, 'ITM001', 'delivery'),
+(12, 'ITM002', 'package'),
+(13, 'ITM003', 'salary'),
+(14, 'ITM004', 'water'),
+(15, 'ITM005', 'Electric');
 
 -- --------------------------------------------------------
 
@@ -89,6 +89,17 @@ CREATE TABLE `profits` (
   `delivery_address` text COLLATE utf8mb4_general_ci,
   `recorded_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `profits`
+--
+
+INSERT INTO `profits` (`id`, `customer_name`, `record_date`, `order_id`, `price`, `delivery_address`, `recorded_by`) VALUES
+(1, 'Alif', '2024-12-02', 'ORD001', 50.00, 'uum', 'hon'),
+(2, 'Ali', '2024-12-04', 'ORD002', 33.00, 'Penang,16', 'hon'),
+(3, 'wei', '2024-12-04', 'ORD003', 67.00, 'kedah', 'hon'),
+(4, 'lim', '2024-12-02', 'ORD004', 55.00, 'Jitra', 'CY'),
+(5, 'Aini', '2024-11-29', 'ORD005', 33.00, 'jitra', 'CY');
 
 -- --------------------------------------------------------
 
@@ -107,7 +118,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'admin', '');
+(1, 'admin', ''),
+(3, 'hon', '$2y$10$5UIWRV7.LaCWtVn7jyQYt.Iidti/tXMiIa4oo57R3qEXIAMcO2NIO'),
+(4, 'CY', '$2y$10$KC3BRvUSDXrN16A4/9scXufp8.0NAQbKYW47PoB.BMSLgLEu/ksRW');
 
 --
 -- Indexes for dumped tables
@@ -152,25 +165,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `profits`
 --
 ALTER TABLE `profits`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
