@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2024 at 10:21 AM
--- Server version: 10.4.32-MariaDB
+-- Generation Time: Dec 06, 2024 at 10:38 AM
+-- Server version: 8.0.38
 -- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `expenses` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `date` date NOT NULL,
-  `item_id` int(11) NOT NULL,
+  `item_id` int NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `recorded_by` varchar(50) DEFAULT NULL
+  `recorded_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -57,9 +57,9 @@ INSERT INTO `expenses` (`id`, `date`, `item_id`, `price`, `recorded_by`) VALUES
 --
 
 CREATE TABLE `items` (
-  `id` int(11) NOT NULL,
-  `item_id` varchar(20) NOT NULL,
-  `item_name` varchar(100) NOT NULL
+  `id` int NOT NULL,
+  `item_id` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `item_name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -81,13 +81,13 @@ INSERT INTO `items` (`id`, `item_id`, `item_name`) VALUES
 --
 
 CREATE TABLE `profits` (
-  `id` int(11) NOT NULL,
-  `customer_name` varchar(100) DEFAULT NULL,
+  `id` int NOT NULL,
+  `customer_name` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `record_date` date NOT NULL,
-  `order_id` varchar(20) NOT NULL,
+  `order_id` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `delivery_address` text DEFAULT NULL,
-  `recorded_by` varchar(50) DEFAULT NULL
+  `delivery_address` text COLLATE utf8mb4_general_ci,
+  `recorded_by` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -97,16 +97,17 @@ CREATE TABLE `profits` (
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL
+  `id` int NOT NULL,
+  `username` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`) VALUES
-(1, 'admin');
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, 'admin', '');
 
 --
 -- Indexes for dumped tables
@@ -151,25 +152,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `profits`
 --
 ALTER TABLE `profits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
